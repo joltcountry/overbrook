@@ -1,0 +1,16 @@
+scenery playhouse "playhouse"
+{
+	noun "playhouse"
+	found_in playfront, playbalcony
+	is enterable
+	before
+	{
+		object DoEnter
+		{
+			if (parent(player) = playfront)
+				MovePlayer(playlevel1)
+			else
+				MovePlayer(playlevel2)
+		}
+	}
+}
