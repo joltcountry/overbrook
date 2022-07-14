@@ -86,7 +86,7 @@ routine init
 	print BANNER
 
 	player = you                    ! player initialization
-	location = lowerdrive
+	location = basement
 	old_location = location        
 	
 	move player to location
