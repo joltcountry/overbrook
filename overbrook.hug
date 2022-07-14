@@ -17,6 +17,10 @@
 #ifset DEBUG
 #switches -d
 #endif
+	
+verb "pet"
+	*                                                       DoVague
+	* object                                                DoPet
 
 #include "verblib.g"			! grammar must come first
 
@@ -37,9 +41,12 @@ window_class graphics_window
     }
     win_bottom
     {
-        return 30
+        return display.screenheight / 2 + 1
     }
-    win_right 600
+    win_right
+	{
+		return display.screenwidth
+	}
 	
     win_textcolor BRIGHT_WHITE
     win_backcolor BLACK
@@ -54,6 +61,7 @@ routine init
 	BGCOLOR = DEF_BACKGROUND
 	SL_TEXTCOLOR = DEF_SL_FOREGROUND
 	SL_BGCOLOR = DEF_SL_BACKGROUND
+	MAX_SCORE = 5
 
 	prompt = ">"
 	color TEXTCOLOR, BGCOLOR
@@ -106,6 +114,8 @@ global force_repaint
 property graphic
 global current_resource_file
 global current_resource
+attribute pet
+
 routine UpdateGraphicsWindow(obj)
 {
     if last_drawn_picture = obj and not force_repaint
@@ -164,9 +174,26 @@ resource "pics"
 	"images/upperdrive.jpg",
 	"images/utility.jpg",
 	"images/lowerdrive.jpg",
-	"images/foyer.jpg"
+	"images/foyer.jpg",
+	"images/hub.jpg",
+	"images/funroom.jpg",
+	"images/office.jpg",
+	"images/nook.jpg",
+	"images/kitchen.jpg",
 }
 
 #include "scenery.hug"
 #include "objects.hug"
 #include "rooms.hug"
+
+routine DoPet
+{
+	print "It would be inappropriate to pet "; The(object)
+	return true
+}
+
+routine scoreit()
+{
+	score = score + 1
+	print "\IYou scored a point!\i"
+}

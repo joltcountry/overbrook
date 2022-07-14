@@ -72,13 +72,18 @@ room funroom "The Fun Room (Level 1)"
 	n_to hub
 	w_to nook
 	u_to nook
+    graphic {
+		current_resource_file = "PICS"
+		current_resource = "funroom"
+		return -1
+    }	
 }
 
 room hub "The Hub (Level 1)"
 {
 	long_desc
 	{
-        "Not really a room, barely a 4x8 foot empty space, but the very heart of the house.
+        "Not really a room, barely a 4x6 foot empty space, but the very heart of the house.
         Adventure awaits in almost every direction!
         
         Stairs lead down to the basement to the west.  To the north, one of the many (3)
@@ -90,7 +95,11 @@ room hub "The Hub (Level 1)"
 	n_to funbath
 	e_to coldroom
 	s_to funroom
-
+	graphic {
+		current_resource_file = "PICS"
+		current_resource = "hub"
+		return -1
+    }	
 }
 
 room funbath "Bathroom (Level 1)"
@@ -184,6 +193,11 @@ room nook "Dining Nook (Level 2)"
 	w_to kitchen
 	n_to foyer
 	s_to backyard
+    graphic {
+		current_resource_file = "PICS"
+		current_resource = "nook"
+		return -1
+    }	
 }
 
 room kitchen "Kitchen (Level 2)"
@@ -192,6 +206,11 @@ room kitchen "Kitchen (Level 2)"
 	{"It's a kitchen"}
 	e_to nook
 	n_to office
+    graphic {
+		current_resource_file = "PICS"
+		current_resource = "kitchen"
+		return -1
+    }	
 }
 
 room office "Living Room (Level 2)"
@@ -200,6 +219,11 @@ room office "Living Room (Level 2)"
 	{"Look, a bunny"}
 	s_to kitchen
 	e_to foyer
+	graphic {
+		current_resource_file = "PICS"
+		current_resource = "office"
+		return -1
+    }	    
 }
 
 room foyer "Foyer (Level 2)"
@@ -289,7 +313,7 @@ room backyard "The Back Yard (Outside)"
 	long_desc
 	{
         "Already private to begin with, this patch of back yard is enclosed by privacy fence,
-        leading to MAXIMUM PRIVACY, and also being able to let our dogs out at any time of
+        leading to \Imaximum privacy\i, and also being able to let our dogs out at any time of
         night or day and not have to worry about it.  A faint smell of dog crap perfumes the
         air.
     

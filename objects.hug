@@ -1,0 +1,28 @@
+object penny "Penny"
+{
+    nouns "penny" "dog" "pitbull"
+    in backyard
+    initial_desc {"An old gray pit bull named Penny lies in the sun."}
+    short_desc {"Penny is lying here in the sun."}
+    long_desc 
+    {
+        "Like most of our dogs, we were supposed to foster her for a week.  That
+        was ten years ago."
+    }
+    before
+    {
+        object DoGet
+        {
+            "She's happy right where she is."
+        }
+        object DoPet
+        {
+            "She rolls over to receive your generous belly rubs."
+            if (penny is not pet)
+            {
+                scoreit("blah blah")
+                penny is pet
+            }
+        }
+    }
+}
