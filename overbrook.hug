@@ -22,6 +22,14 @@ verb "pet"
 	*                                                       DoVague
 	* object                                                DoPet
 
+verb "read"
+	*                                                       DoVague
+	* object                                                DoRead
+
+verb "press", "push"
+	*                                               DoVague
+	* object  										DoPress 
+
 #include "verblib.g"			! grammar must come first
 
 #ifset PRECOMPILED_LIBRARY
@@ -78,7 +86,7 @@ routine init
 	print BANNER
 
 	player = you                    ! player initialization
-	location = basement
+	location = lowerdrive
 	old_location = location        
 	
 	move player to location
@@ -115,6 +123,7 @@ property graphic
 global current_resource_file
 global current_resource
 attribute pet
+attribute read
 
 routine UpdateGraphicsWindow(obj)
 {
@@ -188,7 +197,19 @@ resource "pics"
 
 routine DoPet
 {
-	print "It would be inappropriate to pet "; The(object)
+	print "It would be inappropriate to pet "; The(object); "."
+	return true
+}
+
+routine DoPress
+{
+	print "Pushing "; The(object); " has no discernable, or interesting, effect."
+	return true
+}
+
+routine DoRead
+{
+	print "That's not something one generally reads."
 	return true
 }
 

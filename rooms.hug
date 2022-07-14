@@ -11,7 +11,7 @@ room basement "Basement (Level 0)"
         "A decent-sized, unfinished basement, this is a great place to store all
         of the stuff that we never took out of the basement at the old place and
         just keep moving from house to house.
-        
+        \n\n
         There is a laundry room to the northwest, an a utility closet north.  A 
         small staircase leads out of the basement to the east."
     }
@@ -35,7 +35,7 @@ room laundry "Laundry Room (Level 0)"
         don't work.  Hopefully, by the time you read this, the new ones will arrive, and all of
         these piles will be cleaned, folded, and tossed into boxes in the basement, awaiting
         our next move.
-        
+        \n\n
         You can go back to the basement to the east.  Or, just stay in here.  Free country."
     }
 	e_to basement
@@ -53,7 +53,7 @@ room utility "Utility Closet (Level 0)"
         "This is a room full of things that I don't know what they are or how they 
         work, just that eventually they will break and I will have to pay someone
         two thousand dollars to fix them.
-        
+        \n\n
         The basement is back to the south."
     }
 	s_to basement
@@ -67,7 +67,13 @@ room utility "Utility Closet (Level 0)"
 room funroom "The Fun Room (Level 1)"
 {
 	long_desc
-	{"Where all the action happens"}
+	{
+        "This is the Fun Room, where \"fun\" is defined as watching TV and/or playing videogames
+        on a large section couch that is well past its prime due to dogs climbing all over it
+        all the time.
+        \n\n
+        The Hub is back to the north, and a small staircase leads up to the west."
+    }
 
 	n_to hub
 	w_to nook
@@ -85,7 +91,7 @@ room hub "The Hub (Level 1)"
 	{
         "Not really a room, barely a 4x6 foot empty space, but the very heart of the house.
         Adventure awaits in almost every direction!
-        
+        \n\n
         Stairs lead down to the basement to the west.  To the north, one of the many (3)
         bathrooms, south to the Fun Room, and east to the aptly-named Cold Room."
     }
@@ -108,7 +114,7 @@ room funbath "Bathroom (Level 1)"
 	{
         "We won't change the decoration of this bathroom because I enjoy the beach theme.
         We won't change any of the other bathrooms either, because we are lazy.
-        
+        \n\n
         The Hub lies south."
     }
 
@@ -127,7 +133,7 @@ room coldroom "The Cold Room (Level 1)"
         "For some unknown reason, even with the air conditioning register closed, this is
         always the coldest room in the house.  We spent a lot of time setting it up to be
         Mina's playroom, so she could go play on the laptop in the kitchen instead.
-        
+        \n\n
         The Hub is back to the west, and a small, carpeted staircase (the only patch of
         carpet in the entire house) leads up to the east."
     }
@@ -149,7 +155,7 @@ room garagehall "Garage Hallway (Level 2)"
         "This narrow hallway runs alongside the garage, making it a great place to
         leave your muddy shoes, empty cardboard boxes, and random garbage that you 
         will forget to add to the weekly trash pick-up.
-        
+        \n\n
         You can enter the garage to the south, or head on out into the great outdoors
         to the east."
     }
@@ -171,12 +177,25 @@ room garage "Garage (Level 1)"
 	{
         "This two-car garage can hold one car, because we're not done unpacking yet,
         and likely never will be.
-
-        A narrow hallway lies north, or you can leave the garage to the east."
+        \n\n
+        A narrow hallway lies north, or you can leave the garage to the east.
+        The garage door is currently ";
+        if (garagedoor is open) {
+            print "open."
+        } else {
+            print "closed."
+        }
+        "\nA strange, menacing button is affixed to the wall."
     }
 
 	n_to garagehall
-	e_to upperdrive
+	e_to {
+        if (garagedoor is open) {
+            return upperdrive
+        } else {
+            "The garage door blocks your way."
+        }
+    }
 	graphic {
 		current_resource_file = "PICS"
 		current_resource = "garage"
@@ -187,7 +206,14 @@ room garage "Garage (Level 1)"
 room nook "Dining Nook (Level 2)"
 {
 	long_desc
-	{"Dinner time!"}
+	{
+        "When there's only three people in the house, you don't need a fancy dining room, you just
+        need a little space for a four-seater.  Well, a three-seater, but you never know when
+        someone else will stop by for dinner.  (Nobody ever will.)
+        \n\n
+        You can go out to the back yard to the south, or head west into the kitchen, or go to the
+        foyer to the north."
+    }
 	d_to funroom
 	e_to funroom
 	w_to kitchen
@@ -203,7 +229,11 @@ room nook "Dining Nook (Level 2)"
 room kitchen "Kitchen (Level 2)"
 {
 	long_desc
-	{"It's a kitchen"}
+	{
+        "This is primarily where I microwave hot dogs for Mina's lunch.
+        \n\n
+        The living room is to the north, and the dining nook is to the east."
+    }
 	e_to nook
 	n_to office
     graphic {
@@ -216,7 +246,13 @@ room kitchen "Kitchen (Level 2)"
 room office "Living Room (Level 2)"
 {
 	long_desc
-	{"Look, a bunny"}
+	{
+        "In a normal home, this would be the living room.  But we're not normal, so this is where
+        Kathy and I set up our offices.  And hamsters.  And a bunny.  It's the office/small animal
+        room.
+        \n\n
+        The kitchen lies south, and the foyer is east."
+    }
 	s_to kitchen
 	e_to foyer
 	graphic {
@@ -229,7 +265,13 @@ room office "Living Room (Level 2)"
 room foyer "Foyer (Level 2)"
 {
 	long_desc
-	{"The precipice of greatness!"}
+	{
+        "This is where we would greet visitors, except we never have any visitors.  So this is just
+        a place where you have to decide where you're going to go next.
+        \n\n
+        You may exit the house to the north, head to the dining nook to the south, or go west to 
+        the living room."
+    }
 	n_to frontyard
 	s_to nook
 	w_to office
@@ -244,7 +286,14 @@ room foyer "Foyer (Level 2)"
 room bedhall "Bedroom Hallway (Level 3)"
 {
 	long_desc
-	{"So many doors!"}
+	{
+        "This area challenges you with an important decision.  Which of the three bedroooms do you
+        want to go into?
+        \n\n 
+        Mina's room is to the south.  The master bedroom is to the northeast, and Pinback's Room 
+        is to the southeast.  If you don't want to go into a bedroom, I got a bathroom for you 
+        to the north."
+    }
 	n_to bedbath
 	ne_to master 
 	se_to benroom
@@ -254,7 +303,12 @@ room bedhall "Bedroom Hallway (Level 3)"
 room master "Master Bedroom (Level 3)"
 {
 	long_desc
-	{"Mommy lives here"}
+	{
+        "This master bedroom is not much larger than any of the others, but you have to call
+        one of the bedrooms a master.  It's the law.
+        \n\n
+        The hallway is back to the south, or you can explore the \Ien-suite\i bathroom to the west."
+    }
 	s_to bedhall
 	w_to masterbath
 }
@@ -262,28 +316,47 @@ room master "Master Bedroom (Level 3)"
 room benroom "The Pinback Room (Level 3)"
 {
 	long_desc
-	{"Nobody cumz in here"}
+	{
+        "This is the Pinback Room.  You can just imagine what goes on in here.
+        \n\n 
+        The hallway is back to the west."
+    }
 	w_to bedhall
 }
 
 room minaroom "Mina's Room (Level 3)"
 {
 	long_desc
-	{"What a mess!"}
+	{
+        "When Mina is not in this room, and finds a tiny spot of dirt, or the smallest detail of
+        anything out of place, she will freak out and obsess about it.  This meticulous nature
+        does not extend to this room, which always appears as if a tornado had just come through.
+        \n\n
+        The hallway lies north."
+    }
 	n_to bedhall
 }
 
 room bedbath "Hallway Bathroom (Level 3)"
 {
 	long_desc
-	{"Mina and daddy's bath"}
+	{
+        "Mina and I don't get to go into the master bath, so this is where we clean our bodies
+        and teeth, and do other things you generally associate with bathrooms.
+        \n\n
+        The hallway is back to the south."
+    }
 	s_to bedhall
 }
 
 room masterbath "Master Bathroom (Level 3)"
 {
 	long_desc
-	{"I'm not allowed in here"}
+	{
+        "This bathroom is filled with girl stuff, and I am not allowed in here.
+        \n\n 
+        The master bedroom is to the east."
+    }
 	e_to master
 }
 
@@ -294,7 +367,7 @@ room frontyard "The Front Yard (Outside)"
         "Ah, it's good to have land.  This yard slopes
         more steeply than it looks down to Overbrook Ave., which gives it a nice open feeling and
         a good view, and boy do my knees hurt from trying to mow this monster with a push-mower.
-            
+        \n\n
         You can enter the house through the front door to the south, head east to the upper
         driveway, or west to a world of wonderful fantasy!"
     }
@@ -316,7 +389,7 @@ room backyard "The Back Yard (Outside)"
         leading to \Imaximum privacy\i, and also being able to let our dogs out at any time of
         night or day and not have to worry about it.  A faint smell of dog crap perfumes the
         air.
-    
+        \n\n
         You can enter the house to the north, or go up a few steps to the east to a small
         deck."
     }
@@ -335,7 +408,7 @@ room grill "The Grill Lounge (Outside)"
 	{
         "A small elevated deck, just enough room for a grill, and two chairs.  And a can of
         Narragansett.
-        
+        \n\n
         The back of the house is east, and the back yard is west."
     }
 	w_to backyard
@@ -353,7 +426,7 @@ room backofhouse "Back of House (Outside)"
 	{
         "A nice little drive-up area behind the house to hold extra cars for when
         we have parties, which we will never, ever, ever do.
-            
+        \n\n    
         You can go east to the upper driveway, or west to start the party (which we
         will never have.)"
     }
@@ -373,13 +446,19 @@ room upperdrive "Upper Driveway (Outside)"
         "The driveway opens up nicely at the top, leaving room for two whole PODs to unload,
         and giving us a good view to the neighbors' driveway across the street, just to make
         sure there's no funny business going on over there.
-        
+        \n\n
         The front yard opens up to the northwest, you can enter the house through a hallway
         to the west, enter through the garage to the southwest, or curl around to the south to
         reach the back of the house."
     }
 	w_to garagehall
-	sw_to garage
+	sw_to {
+        if (garagedoor is open) {
+            return garage
+        } else {
+            "The garage door blocks your way."
+        }
+    }
 	nw_to frontyard
 	ne_to lowerdrive
     s_to backofhouse
@@ -396,8 +475,8 @@ room lowerdrive "Lower Driveway (Outside)"
 	{
         "Our portal to the outside world, I personally hope to use it as infrequently as
         possible.  Except to get the mail and go on walks.
-        
-        You can head back to to the house to the southwest."
+        \n\n
+        You can head back up to the house to the southwest."
     }
 	sw_to upperdrive
     graphic {
@@ -410,7 +489,14 @@ room lowerdrive "Lower Driveway (Outside)"
 room playfront "Front of Playhouse (Outside)"
 {
 	long_desc
-	{"There is a playhouse here"}
+	{
+        "You stand here before a towering monument to human ingenuity and fanciful whimsy: 
+        A two-level playhouse, which any child, or child-at-heart, would love to hang out in
+        all day unless it's ninety-five degrees outside, which it has been since we moved in.
+        \n\n
+        To the south, you can go around to the back of the playhouse, or you can enter
+        the bottom level of the playhouse."
+    }
 	e_to frontyard
 	s_to playhouseback
 	in_to playlevel1
@@ -438,7 +524,12 @@ room playfront "Front of Playhouse (Outside)"
 room playlevel1 "Lower Playhouse"
 {
 	long_desc
-	{"It's hot in here"}
+	{
+        "Here is a very hot room with nothing in it, but you could imagine someone having
+        fun in here at some point, somehow.
+        \n\n 
+        Leave the playhouse to go back outside."
+    }
 	n_to playfront
 	out_to playfront
 	graphic {
@@ -451,7 +542,12 @@ room playlevel1 "Lower Playhouse"
 room playlevel2 "Upper Playhouse"
 {
 	long_desc
-	{"It's REALLY hot in here"}
+	{
+        "This is a cozy hangout for the homeless guy Kathy is convinced lives up here because
+        one night when it was really dark she saw a light come on.
+        \n\n 
+        Leave the playhouse to go back to the balcony."
+    }
 	n_to playbalcony
 	out_to playbalcony
 }
@@ -459,7 +555,10 @@ room playlevel2 "Upper Playhouse"
 room playhouseback "Back of Playhouse (Outside)"
 {
 	long_desc
-	{"Get climbin'!"}
+	{
+        "The defining feature of the back of the playhouse is a wooden ladder leading up 
+        to the second level.  You know what to do."
+    }
 	n_to playfront
 	s_to
 	{"There's too many trees and crap"}
@@ -474,7 +573,19 @@ room playhouseback "Back of Playhouse (Outside)"
 room playbalcony "Playhouse Balcony (Level 4)"
 {
     long_desc
-	{"You're the king of the world!"}
+	{
+        "The playhouse balcony provides a panoramic view of your domain and the surrounding area.  I
+        would spend more time up here but getting up here is hard on my knees, and there's no 
+        beer up here.
+        \n\n
+        You can enter the second level of the playhouse, or go back down the ladder to the south.  (Ouch.)"
+
+        if self is not visited
+        { 
+            "Congratulations, you've found level 4!  ";
+            scoreit()
+        }
+    }
 	d_to playhouseback
 	in_to playlevel2
 }

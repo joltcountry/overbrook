@@ -26,3 +26,111 @@ object penny "Penny"
         }
     }
 }
+
+object garagedoor "garage door"
+{
+    found_in garage, upperdrive
+    is not open, openable, static
+    long_desc {
+        print "It is unmistakeably a garage door, which is currently ";
+        if (self is open) {
+            "open."
+        } else {
+            "closed."
+        }
+    }
+    article "the"
+    adjective "garage"
+    noun "door"
+    before
+    {
+        object DoOpen {
+            "It is too inconvenient to open manually.  You will have to find another way."
+            return true
+        }
+        object DoClose {
+            "It is too inconvenient to close manually.  You will have to find another way."
+            return true
+        }
+    }
+}
+
+object garagebutton "button"
+{
+    nouns "button" "opener"
+    adjectives "garage"
+    long_desc
+    {
+        "About three inches wide and one inch high, this rectangular button seems
+        destined to be pressed."
+    }
+    in garage
+    is hidden, static
+    before
+    {
+        object DoPress
+        {
+            if garagedoor is open
+            {
+                garagedoor is not open
+                "With a mechanical whir, the garage door slowly comes down.";
+            } else {
+                garagedoor is open
+                "With a mechanical whir, the garage door slowly opens.  ";
+            }
+            if self is not moved
+            {
+                print "Congratulations, you have discovered the button's powerful secret!"
+                scoreit()   
+                self is moved
+            } else {
+                ""
+            }
+        }
+    }
+}
+
+object mailbox "mailbox"
+{
+    nouns "mail" "box" "mailbox"
+    in lowerdrive
+    is container, openable, not open
+    article "a"
+    long_desc {
+        print "A box, elevated by a short pole, ostensibly for the purpose of receiving and sending mail.
+        It is currently";
+        if self is open {
+            "open."
+        } else {
+            "closed."
+        }
+    }
+}
+
+object authornote "note from the author"
+{
+    in mailbox
+    nouns "note"
+    adjective "author's" "author"
+    article "a"
+    long_desc {"It is a note from the author.  Up to you whether you read it or not."}
+    before {
+        object DoRead
+        {
+            if self not in player
+            {
+                "It would be much easier to read if you were carrying it."
+                return true
+            }
+
+            "Thanks for taking the Overbrook tour!  I hope you've enjoyed it as much as I've
+            enjoyed bringing to you.  Hopefully more.  Much more.  Jesus Christ, what a pain
+            in the ass this is."
+            if self is not read
+            {
+                self is read
+                scoreit()
+            }
+        }
+    }
+}
