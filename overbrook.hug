@@ -86,7 +86,7 @@ routine init
 	print BANNER
 
 	player = you                    ! player initialization
-	location = basement
+	location = garage
 	old_location = location        
 	
 	move player to location
@@ -174,7 +174,8 @@ resource "pics"
 	"images/frontyard.jpg",
 	"images/funbath.jpg",
 	"images/garagehall.jpg",
-	"images/garage.jpg",
+	"images/garageclosed.jpg",
+	"images/garageopen.jpg",
 	"images/laundry.jpg",
 	"images/overbrook.jpg",
 	"images/playfront.jpg",
@@ -217,4 +218,9 @@ routine scoreit()
 {
 	score = score + 1
 	print "\IYou scored a point!\i"
+}
+
+replace PrintEndGame
+{
+	"**** YOU HAVE AWOKEN ****"
 }

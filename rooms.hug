@@ -198,7 +198,7 @@ room garage "Garage (Level 1)"
     }
 	graphic {
 		current_resource_file = "PICS"
-		current_resource = "garage"
+		current_resource = "garageclosed"
 		return -1
     }	
 }
@@ -469,6 +469,37 @@ room upperdrive "Upper Driveway (Outside)"
     }	
 }
 
+routine f209 
+{
+    window 0
+    print "You step out onto Overbrook Avenue.  Taking a deep breath to enjoy the beautiful foliage
+           and scented country air, you fail to notice the 2008 Chevy Cobalt screaming around the
+           bend to the west.  By the time either of you notice the other, it's far too late.
+           \n\n
+           Before the pain of your crushed bones and internal organs hits, you're mercifully 
+           unable to feel it..."
+
+    pause 
+    cls
+
+    print "You awake with a jolt, reflexively sitting up in your small folding bed...\n"
+    pause
+    print "It takes you a moment to regain your bearings, as visions of fences, playhouses
+           and pit bulls fade away in your memory like afterimages...\n"
+    pause
+    print "As you come back to reality, you survey your immediate surroundings...\n"
+    pause
+    print "The endless white of the undecorated walls is interrupted only by a hallway to the south,
+           the kitchen to the east, and the front door to the north.
+           \n\n
+           The front door is closed, displaying its chipped, off-white countenance with pride.
+           \n\n
+           A large, selfish cat stares at you impatiently..."
+    pause
+    scoreit()
+    endflag = true
+}
+
 room lowerdrive "Lower Driveway (Outside)"
 {
 	long_desc
@@ -479,6 +510,9 @@ room lowerdrive "Lower Driveway (Outside)"
         You can head back up to the house to the southwest."
     }
 	sw_to upperdrive
+    n_to { f209 }
+    nw_to { f209 }
+    ne_to { f209 }
     graphic {
 		current_resource_file = "PICS"
 		current_resource = "lowerdrive"
@@ -589,3 +623,6 @@ room playbalcony "Playhouse Balcony (Level 4)"
 	d_to playhouseback
 	in_to playlevel2
 }
+
+
+

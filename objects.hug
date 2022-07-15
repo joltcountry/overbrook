@@ -74,9 +74,20 @@ object garagebutton "button"
             {
                 garagedoor is not open
                 "With a mechanical whir, the garage door slowly comes down.";
+                garage.graphic = {
+                    current_resource_file = "PICS"
+                    current_resource = "garageclosed"
+                    return -1
+                }
             } else {
+                garage.graphic.current_resource = "garageopen"
                 garagedoor is open
                 "With a mechanical whir, the garage door slowly opens.  ";
+                garage.graphic = {
+                    current_resource_file = "PICS"
+                    current_resource = "garageopen"
+                    return -1
+                }
             }
             if self is not moved
             {
@@ -86,19 +97,21 @@ object garagebutton "button"
             } else {
                 ""
             }
+            return true
         }
     }
 }
 
 object mailbox "mailbox"
 {
+    capacity 2 
     nouns "mail" "box" "mailbox"
     in lowerdrive
     is container, openable, not open
     article "a"
     long_desc {
         print "A box, elevated by a short pole, ostensibly for the purpose of receiving and sending mail.
-        It is currently";
+        It is currently ";
         if self is open {
             "open."
         } else {
@@ -109,6 +122,7 @@ object mailbox "mailbox"
 
 object authornote "note from the author"
 {
+    size 1
     in mailbox
     nouns "note"
     adjective "author's" "author"
