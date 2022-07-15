@@ -30,6 +30,12 @@ verb "press", "push"
 	*                                               DoVague
 	* object  										DoPress 
 
+verb "feed"
+	*                                               DoVague
+	* object                                        DoFeed
+	* object "to" xobject                            DoFeedTo
+	* object "with" xobject							DoFeedWith
+
 #include "verblib.g"			! grammar must come first
 
 #ifset PRECOMPILED_LIBRARY
@@ -86,7 +92,7 @@ routine init
 	print BANNER
 
 	player = you                    ! player initialization
-	location = garage
+	location = office
 	old_location = location        
 	
 	move player to location
@@ -190,6 +196,12 @@ resource "pics"
 	"images/office.jpg",
 	"images/nook.jpg",
 	"images/kitchen.jpg",
+	"images/pinbackroom.jpg",
+	"images/master.jpg",
+	"images/masterbath.jpg",
+	"images/bedhall.jpg",
+	"images/hallbath.jpg",
+	"images/minaroom.jpg"
 }
 
 #include "scenery.hug"
@@ -214,6 +226,24 @@ routine DoRead
 	return true
 }
 
+routine DoFeedTo
+{
+	print "You can't feed "; The(object); " to "; The(xobject); "."
+	return true
+}
+
+routine DoFeedWith
+{
+	print "You can't feed "; The(object); " with "; The(xobject); "."
+	return true
+}
+
+routine DoFeed
+{
+	print "You can't feed "; The(object); "."
+	return true
+}
+
 routine scoreit()
 {
 	score = score + 1
@@ -222,5 +252,6 @@ routine scoreit()
 
 replace PrintEndGame
 {
-	"**** YOU HAVE AWOKEN ****"
+	"\n**** YOU HAVE AWOKEN ****"
+	PrintScore
 }

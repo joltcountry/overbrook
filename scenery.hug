@@ -14,3 +14,44 @@ scenery playhouse "playhouse"
 		}
 	}
 }
+
+scenery ladder "ladder"
+{
+    noun "ladder"
+    adjective "wood" "wooden"
+    article "the"
+    in playhouseback
+    long_desc {"It is a sturdy, steeply sloped wooden ladder leading from the ground to the playhouse balcony."}
+}
+
+scenery tree "tree"
+{
+    noun "tree"
+    article "the"
+    in playhouseback
+    long_desc {"I know, right?  What the hell is that?"}
+}
+
+scenery couch "couch"
+{
+    nouns "couch" "sofa"
+    article "the"
+    in funroom
+    long_desc {"This couch has seen better days.  But then again, haven't we all?"}
+}
+
+scenery kitchentable "table"
+{
+    nouns "table" "hightop" "chair" "chairs"
+    article "the"
+    in nook
+    long_desc {"We used to have an actual dining table, but we downsized.  We downsized the table and the house it's in."}
+}
+
+scenery kitchenstuff "kitchen"
+{
+    nouns "sink" "counter" "dishwasher" "microwave" "oven" "faucet" "cabinet" "cabinets" "toaster" "drawer" "drawers"
+    article "the"
+    in kitchen
+    long_desc {"All of the things in the kitchen work just like you'd expect.  Some even worse."}
+}

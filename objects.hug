@@ -148,3 +148,179 @@ object authornote "note from the author"
         }
     }
 }
+
+routine feedBunny
+{
+    if (treats in player) {
+        if dinky is moved {
+            "He's fat enough as it is."
+        } else {
+            dinky is moved
+            print "Dinky quickly gobbles up the treats, without even acknowledging your generosity."
+            scoreit
+        }
+    } else {
+        "You have nothing he wants."
+    }
+}
+
+routine feedCat
+{
+    if (treats in player) {
+        "She is a small animal, but does not like these small animal treats."
+    } else {
+        "You have nothing she wants."
+    }
+}
+
+object dinky "Dinky the bunny rabbit"
+{
+    in office
+    nouns "bunny" "rabbit" "dinky"
+    adjectives "white" "fat"
+    initial_desc {"Dinky the bunny rabbit is here, hopping around his gated-off area."}
+    long_desc
+    {
+        "Dinky is a fat white Californian rabbit.  Like all the other animals in the house, 
+        he was not supposed to be here more than a couple weeks, and it's now been five years."
+    }
+    before
+    {
+        object DoGet 
+        {
+            "Please do not pick up our animals during your tour."
+        }
+        object DoPet 
+        {
+            "You're able to run your hands over his ears for a second before he hops away."
+        }
+        object DoFeed 
+        {
+            feedBunny
+        }
+        object DoFeedWith
+        {
+            if (xobject = treats) {
+                feedBunny
+            }
+        }
+        xobject DoFeedTo
+        {
+            if (object = treats) {
+                feedBunny
+            }
+        }        
+    }
+}
+
+object cat "cat"
+{
+    in foyer
+    nouns "cat"
+    adjectives "white"
+    is hidden
+    long_desc
+    {
+        "Skyler, the smelly white cat, is taking a break from puking and shitting on the floor."
+    }
+    before
+    {
+        object DoGet 
+        {
+            "Please do not pick up our animals during your tour."
+        }
+        object DoPet 
+        {
+            "She purrs quietly and drools on your hand a little bit.  Gross."
+        }
+        object DoFeed 
+        {
+            feedCat
+        }
+        object DoFeedWith
+        {
+            if (xobject = treats) {
+                feedCat
+            }
+        }
+        xobject DoFeedTo
+        {
+            if (object = treats) {
+                feedCat
+            }
+        }        
+    }
+}
+
+object treats "bag of treats"
+{
+    nouns "bag" "treats"
+    article "a"
+    adjectives "animal" "small"
+    in table
+    long_desc {"A deligtful mix of seeds and dried fruit."}
+}
+
+object table "table"
+{
+	in office
+	nouns "table"
+	article "a"
+	capacity 50
+	holding 0
+	is platform, static
+    short_desc {"A table sits in the corner."}
+    long_desc {"It's less a table than a support mechanism for hamster cages."}
+}
+
+object hamsters "hamsters"
+{
+    in table
+    is static, hidden
+    nouns "hamsters" "cage" "cages" "hamster"
+    long_desc {"We bought two hamsters.  Turns out they were both female.  Turns 
+                out they were both pregnant.  So now we have lots of them."}
+    before
+    {
+        object DoGet {"If it was up to me, you could take 'em all.  But it ain't."}
+    }
+}
+
+object honda "Honda Passport"
+{
+    in upperdrive
+    is static, hidden
+    nouns "car" "honda" "van" "passport"
+    article "the"
+    long_desc {"\"Daddy's car\", a dark gray 2021 Honda Passport.  Used mainly for going to the grocery store."}
+    before
+    {
+        object {
+            if verbroutine ~= &DoLook {
+                "Please leave Daddy's car alone."
+                return true
+            }
+            return false
+        }
+    }
+}
+
+object jeep "Jeep Wrangler"
+{
+    in garage
+    is static, hidden
+    nouns "car" "jeep" "wrangler"
+    article "the"
+    long_desc {"\"Mommy's car\", a dark green 2022 Jeep Wrangler.
+                It's important for a family where both adults work from home to have two cars."}
+    before
+    {
+        object {
+            if verbroutine ~= &DoLook {
+                "Please leave Mommy's car alone."
+                return true
+            }
+            return false
+        }
+    }
+}

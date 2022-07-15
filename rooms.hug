@@ -269,13 +269,14 @@ room foyer "Foyer (Level 2)"
         "This is where we would greet visitors, except we never have any visitors.  So this is just
         a place where you have to decide where you're going to go next.
         \n\n
-        You may exit the house to the north, head to the dining nook to the south, or go west to 
-        the living room."
+        You may exit the house to the north, head to the dining nook to the south, go west to 
+        the living room, or head up a small flight of stairs to the east."
     }
 	n_to frontyard
 	s_to nook
 	w_to office
 	u_to bedhall
+    e_to bedhall
 	graphic {
 		current_resource_file = "PICS"
 		current_resource = "foyer"
@@ -298,6 +299,11 @@ room bedhall "Bedroom Hallway (Level 3)"
 	ne_to master 
 	se_to benroom
 	s_to minaroom
+    graphic {
+		current_resource_file = "PICS"
+		current_resource = "bedhall"
+		return -1
+    }
 }
 
 room master "Master Bedroom (Level 3)"
@@ -311,6 +317,11 @@ room master "Master Bedroom (Level 3)"
     }
 	s_to bedhall
 	w_to masterbath
+    graphic {
+		current_resource_file = "PICS"
+		current_resource = "master"
+		return -1
+    }
 }
 
 room benroom "The Pinback Room (Level 3)"
@@ -320,6 +331,11 @@ room benroom "The Pinback Room (Level 3)"
         "This is the Pinback Room.  You can just imagine what goes on in here.
         \n\n 
         The hallway is back to the west."
+    }
+    graphic {
+		current_resource_file = "PICS"
+		current_resource = "pinbackroom"
+		return -1
     }
 	w_to bedhall
 }
@@ -335,6 +351,11 @@ room minaroom "Mina's Room (Level 3)"
         The hallway lies north."
     }
 	n_to bedhall
+    graphic {
+		current_resource_file = "PICS"
+		current_resource = "minaroom"
+		return -1
+    }
 }
 
 room bedbath "Hallway Bathroom (Level 3)"
@@ -347,6 +368,11 @@ room bedbath "Hallway Bathroom (Level 3)"
         The hallway is back to the south."
     }
 	s_to bedhall
+    graphic {
+		current_resource_file = "PICS"
+		current_resource = "hallbath"
+		return -1
+    }
 }
 
 room masterbath "Master Bathroom (Level 3)"
@@ -358,6 +384,11 @@ room masterbath "Master Bathroom (Level 3)"
         The master bedroom is to the east."
     }
 	e_to master
+    graphic {
+		current_resource_file = "PICS"
+		current_resource = "masterbath"
+		return -1
+    }
 }
 
 room frontyard "The Front Yard (Outside)"
