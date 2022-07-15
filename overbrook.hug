@@ -92,7 +92,7 @@ routine init
 	print BANNER
 
 	player = you                    ! player initialization
-	location = office
+	location = basement
 	old_location = location        
 	
 	move player to location
@@ -201,7 +201,9 @@ resource "pics"
 	"images/masterbath.jpg",
 	"images/bedhall.jpg",
 	"images/hallbath.jpg",
-	"images/minaroom.jpg"
+	"images/minaroom.jpg",
+	"images/playlevel2.jpg",
+	"images/balcony.jpg"
 }
 
 #include "scenery.hug"

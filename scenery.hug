@@ -55,3 +55,17 @@ scenery kitchenstuff "kitchen"
     in kitchen
     long_desc {"All of the things in the kitchen work just like you'd expect.  Some even worse."}
 }
+
+scenery bed "bed"
+{
+    noun "bed"
+    found_in minaroom, master, benroom
+    long_desc {"That's a bed, alright.  No getting around it."}
+}
+
+scenery tv "television"
+{
+    nouns "tv" "television"
+    found_in benroom, funroom
+    long_desc {"The perfect appliance for watching 20-year-old South Park reruns!"}
+}
