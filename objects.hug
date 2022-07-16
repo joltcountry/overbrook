@@ -140,11 +140,6 @@ object authornote "note from the author"
             "Thanks for taking the Overbrook tour!  I hope you've enjoyed it as much as I've
             enjoyed bringing to you.  Hopefully more.  Much more.  Jesus Christ, what a pain
             in the ass this is."
-            if self is not read
-            {
-                self is read
-                scoreit()
-            }
         }
     }
 }
@@ -216,7 +211,7 @@ object dinky "Dinky the bunny rabbit"
 object cat "cat"
 {
     in foyer
-    nouns "cat"
+    nouns "cat" "skyler"
     adjectives "white"
     is hidden
     long_desc
@@ -254,11 +249,11 @@ object cat "cat"
 
 object treats "bag of treats"
 {
-    nouns "bag" "treats"
+    nouns "bag" "treats" "treat"
     article "a"
     adjectives "animal" "small"
     in table
-    long_desc {"A deligtful mix of seeds and dried fruit."}
+    long_desc {"A delightful mix of seeds and dried fruit."}
 }
 
 object table "table"

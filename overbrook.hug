@@ -18,6 +18,9 @@
 #switches -d
 #endif
 	
+verb "xyzzy"
+    *														DoXyzzy
+
 verb "pet"
 	*                                                       DoVague
 	* object                                                DoPet
@@ -25,6 +28,10 @@ verb "pet"
 verb "read"
 	*                                                       DoVague
 	* object                                                DoRead
+
+verb "climb"
+	*                                                       DoVague
+	* object                                                DoClimb
 
 verb "press", "push"
 	*                                               DoVague
@@ -34,6 +41,12 @@ verb "feed"
 	*                                               DoVague
 	* object                                        DoFeed
 	* object "to" xobject                            DoFeedTo
+	* object "with" xobject							DoFeedWith
+
+verb "give"
+	*                                               DoVague
+	* object                                        DoFeed
+	* object "to" xobject                           DoFeedTo
 	* object "with" xobject							DoFeedWith
 
 #include "verblib.g"			! grammar must come first
@@ -80,7 +93,9 @@ routine init
 	prompt = ">"
 	color TEXTCOLOR, BGCOLOR
 
+	window 0
 	cls
+	display.title_caption = "OVERBROOK"
 	picture "PICS", "overbrook"
 	"(Press any key to begin)"
 	pause
@@ -244,6 +259,25 @@ routine DoFeed
 {
 	print "You can't feed "; The(object); "."
 	return true
+}
+
+routine DoClimb
+{
+	print "You can't climb "; The(object); "."
+	return true
+}
+
+routine DoXyzzy 
+{
+	if player in basement {
+		"You feel a faint vibration in the floor for a moment, but nothing else happens."
+	} else {
+		"Your ears begin to ring.  A dizziness overwhelms you.  You fall to the floor.  After regaining
+		consciousness, things don't look the same."
+		MovePlayer(basement)
+		Perform(&DoLook, basement)
+		UpdateGraphicsWindow(location)
+	}
 }
 
 routine scoreit()

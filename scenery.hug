@@ -20,8 +20,17 @@ scenery ladder "ladder"
     noun "ladder"
     adjective "wood" "wooden"
     article "the"
-    in playhouseback
+    found_in playhouseback, playbalcony
     long_desc {"It is a sturdy, steeply sloped wooden ladder leading from the ground to the playhouse balcony."}
+    before {
+        object DoClimb {
+            if player in playbalcony {
+                Perform(&DoGo, d_obj)
+            } else {
+                Perform(&DoGo, u_obj)
+            }
+        }
+    }
 }
 
 scenery tree "tree"

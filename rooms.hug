@@ -12,7 +12,7 @@ room basement "Basement (Level 0)"
         of the stuff that we never took out of the basement at the old place and
         just keep moving from house to house.
         \n\n
-        There is a laundry room to the northwest, an a utility closet north.  A 
+        There is a laundry room to the northwest, and a utility closet north.  A 
         small staircase leads out of the basement to the east."
     }
 
@@ -69,7 +69,7 @@ room funroom "The Fun Room (Level 1)"
 	long_desc
 	{
         "This is the Fun Room, where \"fun\" is defined as watching TV and/or playing videogames
-        on a large section couch that is well past its prime due to dogs climbing all over it
+        on a large sectional couch that is well past its prime due to dogs climbing all over it
         all the time.
         \n\n
         The Hub is back to the north, and a small staircase leads up to the west."
@@ -156,8 +156,8 @@ room garagehall "Garage Hallway (Level 2)"
         leave your muddy shoes, empty cardboard boxes, and random garbage that you 
         will forget to add to the weekly trash pick-up.
         \n\n
-        You can enter the garage to the south, or head on out into the great outdoors
-        to the east."
+        You can enter the garage to the south, go down to the Cold Room to the west, 
+        or head on out into the great outdoors to the east."
     }
 
 	w_to coldroom
@@ -293,12 +293,14 @@ room bedhall "Bedroom Hallway (Level 3)"
         \n\n 
         Mina's room is to the south.  The master bedroom is to the northeast, and Pinback's Room 
         is to the southeast.  If you don't want to go into a bedroom, I got a bathroom for you 
-        to the north."
+        to the north.  Stairs lead back down to the foyer to the west."
     }
 	n_to bedbath
 	ne_to master 
 	se_to benroom
 	s_to minaroom
+    d_to foyer
+    w_to foyer
     graphic {
 		current_resource_file = "PICS"
 		current_resource = "bedhall"
@@ -480,7 +482,7 @@ room upperdrive "Upper Driveway (Outside)"
         \n\n
         The front yard opens up to the northwest, you can enter the house through a hallway
         to the west, enter through the garage to the southwest, or curl around to the south to
-        reach the back of the house."
+        reach the back of the house.  The driveway narrows down to Overbrook Avenue to the northeast."
     }
 	w_to garagehall
 	sw_to {
@@ -559,8 +561,8 @@ room playfront "Front of Playhouse (Outside)"
         A two-level playhouse, which any child, or child-at-heart, would love to hang out in
         all day unless it's ninety-five degrees outside, which it has been since we moved in.
         \n\n
-        To the south, you can go around to the back of the playhouse, or you can enter
-        the bottom level of the playhouse."
+        To the south, you can go around to the back of the playhouse, you can go back to the
+        front yard to the east, or you can enter the bottom level of the playhouse."
     }
 	e_to frontyard
 	s_to playhouseback
@@ -627,11 +629,15 @@ room playhouseback "Back of Playhouse (Outside)"
 	long_desc
 	{
         "The defining feature of the back of the playhouse is a wooden ladder leading up 
-        to the second level.  You know what to do."
+        to the second level.  You know what to do.
+        \n\n
+        The front of the playhouse is to the north."
     }
 	n_to playfront
 	s_to
-	{"There's too many trees and crap"}
+	{"There's too many trees and crap."}
+    w_to
+    {"There are too many obstacles to climb down to the brook.  Ohhh, that's why they call it that!"}
 	u_to playbalcony
 	graphic {
 		current_resource_file = "PICS"
@@ -646,9 +652,9 @@ room playbalcony "Playhouse Balcony (Level 4)"
 	{
         "The playhouse balcony provides a panoramic view of your domain and the surrounding area.  I
         would spend more time up here but getting up here is hard on my knees, and there's no 
-        beer up here.
+        beer.
         \n\n
-        You can enter the second level of the playhouse, or go back down the ladder to the south.  (Ouch.)"
+        You can enter the second level of the playhouse, or go back down the ladder.  (Ouch.)"
 
         if self is not visited
         { 
